@@ -4,8 +4,9 @@
 See https://cloud.ibm.com/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli&locale=en
 See https://cloud.ibm.com/docs/openwhisk?topic=cloud-functions-cloudfunctions_cli&locale=en#cloudfunctions_cli
 
-Download the wsk bin file from https://github.com/apache/incubator-openwhisk-cli/releases/tag/latest
 
+Download the wsk bin file from https://github.com/apache/incubator-openwhisk-cli/releases/tag/latest
+Download the wskdeploy bin file from https://github.com/apache/incubator-openwhisk-wskdeploy/releases/tag/latest
 Copy the wsk and wskdeploy executables file in the ~/bin folder to have access to these commands from anywhere.
 
 Tested on windows 10 using the git bash console, but it must work like a charm on Linux.
@@ -17,18 +18,25 @@ ibmcloud plugin install cloud-functions
 ibmcloud plugin list
 
 ibmcloud target --cf
-ibmcloud target -r eu-gb -o "your org" -s "your space"
+ibmcloud target -r "your region" -o "your org" -s "your space"
 # example: ibmcloud target -r eu-gb -o "frederic.cassin@yahoo.fr" -s dev
 
+# (optional) to consult your credential data
 ibmcloud fn property get --auth
 ibmcloud fn property get --apihost
-
 ```
 
 ~/.wskprops normally contains your auth and apihost you have enter during the login phase.
-so now each wsk or wskdeploy execution should use it.
+so now each wsk or wskdeploy execution will use it.
 
-## Test of handling a single package with 2 actions
+## Install the wsk and wskdeploy CLI commands thta work with any OpenWhisk (IBM or on premises)
+
+Download the wsk bin file from https://github.com/apache/incubator-openwhisk-cli/releases/tag/latest
+Download the wskdeploy bin file from https://github.com/apache/incubator-openwhisk-wskdeploy/releases/tag/latest
+Copy the wsk and wskdeploy executables file in the ~/bin folder to have access to these commands from anywhere.
+
+
+## Test of handling a single OpenWhisk package with more than one action (group of actions)
 
 Prerequisites: Java JDK >= 8 installed, Maven >= 3
 ```bash
